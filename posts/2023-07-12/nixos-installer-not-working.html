@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../../css/posts.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav id="nav-bar">
+            <a href="../../index.html">Home</a> | 
+            <a href="../../blog.html">Blog</a> | 
+            <a href="../../portfolio.html">Portfolio</a> | 
+            <a href="../../about.html">About me</a>
+        </nav>
+        <h1 class="main-title"> Troubleshooting: NixOs installer not outputting display after selecting any option</h1>
+        <div class="main-content">
+            <p>So I tried to install using the 3 installers that are listed on the downloads page, yet none of these seemed to work as I wouldn’t get any display after selecting any of the options.</p>
+            <p>After some research and some thinking, I came to the conclusion that it was due to the installer live iso not loading the amdgpu drivers needed for my card (rx 6600). From this point, you’ve got three options
+            </p>
+            <ul>
+                <li>Creating an install from another live iso (i.e Ubuntu): <a href ="https://gist.github.com/chris-martin/4ead9b0acbd2e3ce084576ee06961000">Guide by chris martin</a>. By far the weirdest method, but makes sense once you get into it</li>
+                <li>Building an iso with the aditional amdgpu driver: <a href=" https://nixos.org/manual/nixos/unstable/index.html#sec-building-image</li>"> Building images </a></li>
+                <li>Just connect to your integrated graphics and install the driver later. Sadly, I’m using a workstation that uses a xeon cpu, so no integrated graphics on my end. Luckily enough I had a spare gt 710 laying around, so I installed and then configured my nixOS by adding these lines:</li>
+            </ul>
+            <p>configuration.nix</p>
+            <p class="code">services.xserver.enable = true</p>
+            <p class="code">services.xserver.videoDrivers = [ "amdgpu" ]</p>
+            <p>hardware-configuration.nix</p>
+            <p class="code">boot.initrd.kernelModules = [ "amdgpu" ]; </p>
+            <p>Finally, ran</p>
+            <p class="code">nixos-rebuild switch</p>
+            <p> powered off, switched to my graphics card and everything worked fine after that</p>
+        </div>
+    </body>
+</html>

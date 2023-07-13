@@ -1,0 +1,34 @@
+body{
+    font-family: "PT Sans", Calibri, Tahoma, sans-serif;
+    font-size:1.1em;
+}
+#nav-bar{
+    text-align: center;
+}
+.main-title{
+    padding-top:3%;
+    text-align:center;
+    color:#1e81b0;
+}
+.main-content{
+    max-width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: justify;
+}
+.main-content > ul >li{
+    padding-top:10px;
+}
+.code {
+  background: #ffeff0;
+  word-wrap: break-word;
+  box-decoration-break: clone;
+  padding: .1rem .3rem .2rem;
+  border-radius: .2rem;
+}
+.highligthed{
+    text-align: center;
+}
+.contact-text{
+    text-align: center;
+}
